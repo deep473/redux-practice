@@ -1,25 +1,22 @@
-import React from 'react'
-import { useState } from "react";
-import Cart from '../Cart';
+import React, { useState } from 'react'
+import Cart from './Cart';
 
-export default function Shopping({user}) {
-
-    const [clicked, setClicked] = useState(false);
-    function gotoCart(){
-        setClicked(true);
+export default function Shopping() {
+    const [isClicked, setIsClicked] = useState(false);
+    function handleOnClick(){
+        setIsClicked(true);
     }
-    if(clicked){
-        return (
-        <Cart user = {user}/>
+    if(isClicked){
+        return(
+            <Cart />
         )
-    } 
-    return (
-        <>
-            <h4>Got what you were looking for?</h4>
-            
-            <button onClick={gotoCart}>
-                Add to cart
-            </button>
-        </>
-    )
+    }
+  return (
+    <>
+        <h2>Shopping page</h2>
+        <h4>Found what you were looking for?</h4>
+
+        <button onClick={handleOnClick}>Add to cart</button>
+    </>
+  )
 }

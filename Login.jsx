@@ -1,26 +1,27 @@
-import React from 'react'
-import { useState } from "react";
+import React, { useState } from 'react'
 import Shopping from './Shopping';
+import { useSelector } from 'react-redux';
 
-export default function Login({user}) {
+export default function Login() {
+    const [isClicked, setIsClicked] = useState(false);
 
-    const [clicked, setClicked] = useState(false);
-    function gotoShopping(){
-        setClicked(true);
+    const user = useSelector(state => state.user);
+
+    function handleOnClick(){
+        setIsClicked(true);
     }
-    if(clicked){
-        return (
-        <Shopping user = {user}/>
+    if(isClicked){
+        return(
+            <Shopping />
         )
-    } 
-    return (
-        <>
-            <h4>Username : {user.username}</h4>
-            <h4>Wallet balance : {user.wallet}</h4>
-            
-            <button onClick={gotoShopping}>
-                Continue shopping
-            </button>
-        </>
-    )
+    }
+  return (
+    <>
+        <h2>Login page</h2>
+        <h4>Username : {user.username}</h4>
+        <h4>Wallet : {user.wallet}</h4>
+
+        <button onClick={handleOnClick}>Shopping</button>
+    </>
+  )
 }

@@ -1,24 +1,22 @@
-import React from 'react'
-import { useState } from "react";
+import React, { useState } from 'react'
 import Payment from './Payment';
 
-export default function Cart({user}) {
-    const [clicked, setClicked] = useState(false);
-    function gotoPayment(){
-        setClicked(true);
+export default function Cart() {
+    const [isClicked, setIsClicked] = useState(false);
+    function handleOnClick(){
+        setIsClicked(true);
     }
-    if(clicked){
-        return (
-        <Payment user = {user}/>
+    if(isClicked){
+        return(
+            <Payment />
         )
-    } 
-    return (
-        <>
-            <h4>Shopping finalized?</h4>
-            
-            <button onClick={gotoPayment}>
-                Proceed to Payment
-            </button>
-        </>
-    )
+    }
+  return (
+    <>
+        <h2>Cart page</h2>
+        <h4>All looks good?</h4>
+
+        <button onClick={handleOnClick}>Proceed to payment</button>
+    </>
+  )
 }
